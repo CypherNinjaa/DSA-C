@@ -12,9 +12,9 @@ int main()
     int row, col;
 
     // Take input for row & column
-    printf("Enter the number of rows in the matrix: ");
+    printf("Enter the number of rows : ");
     scanf("%d", &row);
-    printf("Enter the number of columns in the matrix: ");
+    printf("Enter the number of columns : ");
     scanf("%d", &col);
 
     // Create matrix

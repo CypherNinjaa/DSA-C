@@ -1,46 +1,58 @@
 #include <stdio.h>
+
+// Function Prototypes
 void mtxinput(int *, int, int);
 void mtxdisplay(int *, int, int);
 void mtxsparse(int *, int, int);
 void mtxoutput(int *, int, int);
+
 int main()
 {
-    // row & column
+    // Row & Column
     int row, col;
-    // take input row & column
-    printf("Enter the row of the mtx : ");
+
+    // Take input for row & column
+    printf("Enter the number of rows in the matrix: ");
     scanf("%d", &row);
-    printf("Enter the Column of the mtx : ");
+    printf("Enter the number of columns in the matrix: ");
     scanf("%d", &col);
-    // create mtx
+
+    // Create matrix
     int arr[row][col];
-    // create pointer
+
+    // Pointer to first element
     int *ptr = &arr[0][0];
-    // call function for input
+
+    // Call function for input
     mtxinput(ptr, row, col);
-    // call function for display inputed mtx
+
+    // Call function for displaying the input matrix
     mtxdisplay(ptr, row, col);
-    // call function for sparse mtx check
+
+    // Call function to check if matrix is sparse
     mtxsparse(ptr, row, col);
+
     return 0;
 }
-// mtx input function
+
+// Matrix input function
 void mtxinput(int *ptr, int row, int col)
 {
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
         {
-            printf("Enter [%d][%d] term : ", i, j);
+            printf("Enter [%d][%d] term: ", i, j);
             scanf("%d", ptr);
             ptr++;
         }
     }
 }
-// mtx display function
+
+// Matrix display function
 void mtxdisplay(int *ptr, int row, int col)
 {
-    printf("Your Mtarix : \n");
+    printf("\nYour Matrix:\n");
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -51,10 +63,13 @@ void mtxdisplay(int *ptr, int row, int col)
         printf("\n");
     }
 }
+
+// Sparse matrix check function
 void mtxsparse(int *ptr, int row, int col)
 {
     int zero = 0;
-    int total_element = row * col;
+    int total_elements = row * col;
+
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -63,26 +78,28 @@ void mtxsparse(int *ptr, int row, int col)
             {
                 zero++;
             }
-            
         }
-        }
-    printf("It has %d zero", zero);
-    if (zero > (total_element / 2))
+    }
+
+    printf("\nIt has %d zeros.\n", zero);
+
+    if (zero > (total_elements / 2))
     {
-        printf("\nyour matrix is Sparse : \n");
-        // if mtx is sparse then call output
+        printf("Your matrix is Sparse:\n");
+        // If the matrix is sparse, call output function
         mtxoutput(ptr, row, col);
     }
     else
-        printf("Matrix is not sparse : \n");
+    {
+        printf("Matrix is not sparse.\n");
+    }
 }
-// if mtx is sparse then print it
+
+// Output the sparse matrix in triplet form
 void mtxoutput(int *ptr, int row, int col)
 {
-    printf("sparse matrix in triplet form : \n");
-
-    // print formatting
-    printf("Row\tColumn\tValue\t\n");
+    printf("\nSparse Matrix in Triplet Form:\n");
+    printf("Row\tColumn\tValue\n");
 
     for (int i = 0; i < row; i++)
     {
@@ -90,9 +107,8 @@ void mtxoutput(int *ptr, int row, int col)
         {
             if (*(ptr + i * col + j) != 0)
             {
-                printf("%d\t%d\t%d", i+1, j+1, *(ptr + i * col + j));
+                printf("%d\t%d\t%d\n", i + 1, j + 1, *(ptr + i * col + j));
             }
         }
-        printf("\n");
     }
 }

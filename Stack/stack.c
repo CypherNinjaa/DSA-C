@@ -6,16 +6,16 @@ void display(int stack[], int);
 int main()
 {
     int stack[size];
-    int top = -1;
+    int top = -1;   //let stack is empty
     // take input
-    int n, a;
+    int n, Choice;
     while (1)
     {
         printf("\nStack Operation\n");
         printf("1. push\n2. pop\n3. display\n4. exit\n");
         printf("Enter your choice : ");
-        scanf("%d", &a);
-        switch (a)
+        scanf("%d", &Choice);
+        switch (Choice)
         {
         case 1:
             printf("Enter the elemet to push : ");

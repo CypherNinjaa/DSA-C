@@ -1,8 +1,8 @@
 #include <stdio.h>
 #define size 10 // max size of stack
-void push(int stack[], int *, int);
+void push(int stack[], int *top, int);
 void pop(int stack[], int *top);
-void display(int stack[], int);
+void display(int stack[], int* top);
 int main()
 {
     int stack[size];
@@ -28,7 +28,7 @@ int main()
             pop(stack, &top);
         case 3:
             // call display function
-            display(stack, top);
+            display(stack, &top);
             break;
         case 4:
             return 0;
@@ -51,16 +51,16 @@ void push(int stack[], int *top, int n)
     printf("%d pushed into stack\n", n);
 }
 // display function
-void display(int stack[], int top)
+void display(int stack[], int *top)
 {
-    if (top== -1)
+    if (*top== -1)
     {
         printf("\nStack is Empty!");
         return;
     }
     else
         printf("Stack element : \n");
-    for (int i = 0; i <= top; i++)
+    for (int i = 0; i <= *top; i++)
     {
         printf("%d\n", stack[i]);
     }

@@ -1,18 +1,21 @@
 #include <stdio.h>
 #define size 5
+
 void enqueue();
 void dequeue();
 void display();
 void peek();
+
 int queue[size], front = -1, rear = -1;
+
 int main()
 {
     int choice;
     while (1)
     {
-        printf("\n1. enqueue\n2. dequeue\n3. diplay\n4. peek\n5. Exit\nEnter choice : ");
-
+        printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Peek\n5. Exit\nEnter choice : ");
         scanf("%d", &choice);
+
         switch (choice)
         {
         case 1:
@@ -30,13 +33,13 @@ int main()
         case 5:
             return 0;
         default:
-            printf("Invalid Input");
+            printf("Invalid Input\n");
             break;
         }
     }
-
     return 0;
 }
+
 // Enqueue function
 void enqueue()
 {
@@ -50,21 +53,21 @@ void enqueue()
     {
         if (front == -1)
         {
-            front = 0; // set front to 0 if inserting first element
+            front = 0; // Set front to 0 if inserting first element
         }
-        printf("Enter the element to insert in queue : ");
+        printf("Enter the element to insert in queue: ");
         scanf("%d", &value);
         queue[++rear] = value;
         printf("%d inserted into the queue.\n", value);
     }
 }
 
-// Dequeue Function
+// Dequeue function
 void dequeue()
 {
     if (front == -1 || front > rear)
     {
-        printf("Queue is Empty!");
+        printf("Queue is Empty!\n");
         return;
     }
     else
@@ -73,13 +76,13 @@ void dequeue()
         front++;
         if (front > rear)
         {
-            // reset when queue becomes empty
+            // Reset when queue becomes empty
             front = rear = -1;
         }
     }
 }
 
-// Display function;
+// Display function
 void display()
 {
     if (front == -1 || front > rear)
@@ -89,25 +92,25 @@ void display()
     }
     else
     {
-        printf("Queue Elements : \n");
+        printf("Queue Elements: ");
         for (int i = front; i <= rear; i++)
         {
             printf("%d ", queue[i]);
-            
         }
+        printf("\n");
     }
 }
 
-// peek function
+// Peek function
 void peek()
 {
     if (front == -1 || front > rear)
     {
-        printf("Queue is empty!");
+        printf("Queue is empty!\n");
         return;
     }
     else
     {
-        printf("Front element : %d", queue[front]);
+        printf("Front element: %d\n", queue[front]);
     }
 }

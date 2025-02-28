@@ -1,80 +1,81 @@
 #include <stdio.h>
 #define size 10 // max size of stack
+
 void push(int stack[], int *top, int);
 void pop(int stack[], int *top);
-void display(int stack[], int* top);
+void display(int stack[], int *top);
+
 int main()
 {
     int stack[size];
-    int top = -1;   //let stack is empty
-    // take input
+    int top = -1; // let stack is empty
     int n, Choice;
+
     while (1)
     {
         printf("\nStack Operation\n");
-        printf("1. push\n2. pop\n3. display\n4. exit\n");
-        printf("Enter your choice : ");
+        printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
         scanf("%d", &Choice);
+
         switch (Choice)
         {
         case 1:
-            printf("Enter the elemet to push : ");
+            printf("Enter the element to push: ");
             scanf("%d", &n);
-            // call push function
             push(stack, &top, n);
             break;
         case 2:
-            // call pop function
             pop(stack, &top);
+            break; 
         case 3:
-            // call display function
             display(stack, &top);
             break;
         case 4:
             return 0;
         default:
-
             printf("Invalid Choice\n");
         }
     }
 }
-// push function
+
+// Push function
 void push(int stack[], int *top, int n)
 {
     if (*top == size - 1)
     {
-        printf("Stack overflow!");
+        printf("Stack overflow!\n");
         return;
     }
-    else
-        stack[++(*top)] = n;
+    stack[++(*top)] = n;
     printf("%d pushed into stack\n", n);
 }
-// display function
+
+// Display function
 void display(int stack[], int *top)
 {
-    if (*top== -1)
+    if (*top == -1)
     {
-        printf("\nStack is Empty!");
+        printf("\nStack is Empty!\n");
         return;
     }
-    else
-        printf("Stack element : \n");
-    for (int i = 0; i <= *top; i++)
+
+    printf("Stack elements:\n");
+    for (int i = *top; i >= 0; i--) // Display from top to bottom
     {
         printf("%d\n", stack[i]);
     }
 }
+
 // Pop function
 void pop(int stack[], int *top)
 {
     if (*top == -1)
     {
-        printf("Satck underflow!");
+        printf("Stack underflow!\n"); // Fixed typo
         return;
     }
-    else
 
-        printf("\n%d Popped from stack\n", stack[*top]);
+    printf("%d popped from stack\n", stack[*top]);
     (*top)--;
 }

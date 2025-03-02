@@ -59,7 +59,8 @@ void input(int *ptr, int size)
     for (int i = 0; i < size; i++)
     {
         printf("Enter element [%d]: ", i + 1);
-        scanf("%d", &ptr[i]);
+        scanf("%d", ptr);
+        ptr++;
     }
 }
 
@@ -69,7 +70,8 @@ void display(int *ptr, int size)
     printf("Array: ");
     for (int i = 0; i < size; i++)
     {
-        printf("%d ", ptr[i]);
+        printf("%d ", *ptr);
+        ptr++;
     }
     printf("\n");
 }

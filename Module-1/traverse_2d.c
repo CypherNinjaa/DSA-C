@@ -1,3 +1,4 @@
+// WAP TO TRAVERSE AN ARRAY (a) one Dimensional (b) Two dimensional array ( user input of dimensions)
 #include <stdio.h>
 int main()
 {

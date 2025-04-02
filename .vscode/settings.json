@@ -1,0 +1,6 @@
+{
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.customCommand": "echo run",
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.saveFileBeforeRun": true
+}

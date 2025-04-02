@@ -1,29 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
-sturct node{
+struct node{
     int data;
     struct node* next;
 };
+void traverse(struct node* ptr){
+    while(ptr!=NULL){
+        printf("Element : %d\n", ptr->data);
+        ptr=ptr->next;
+    }
+}
 int main(){
     struct node* head;
     struct node* second;
     struct node* third;
+    struct node* fourth;
     //allocate memory
     head = (struct node *) malloc(sizeof(struct node));
     second = (struct node *) malloc(sizeof(struct node));
     third = (struct node *) malloc(sizeof(struct node));
+    fourth = (struct node *) malloc(sizeof(struct node));
 
     //link first and second
-    head->data=7;
-    head->next=second;
+    head-> data=7;
+    head-> next=second;
 
     //link second and third
-    second->data=44;
-    second->next=third;
+    second-> data=44;
+    second-> next=third;
+
+    //link second and third
+    third-> data=44;
+    third-> next=fourth;
 
     //link last
-    third->data=444;
-    head->next=NULL;
+    fourth-> data=66;
+    fourth-> next=NULL;
 
+        traverse(head);
     return 0;
 }

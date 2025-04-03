@@ -7,7 +7,7 @@ struct node
 };
 // fn prtp
 void traverse(struct node *head);
-void deleteAtLast(struct node **head);
+void deleteByValue(struct node **head, int);
 int main()
 {
     struct node *head;
@@ -38,7 +38,7 @@ int main()
     // traverse fn call
     traverse(head);
     printf("After deleting\n");
-    deleteAtLast(&head);
+    deleteByValue(&head,44);
     traverse(head);
     return 0;
 }
@@ -53,33 +53,33 @@ void traverse(struct node *head)
 }
 
 // delet fn dfn
-void deleteAtLast(struct node **head)
+void deleteByValue(struct node **head, int value)
 {
-    // if head is null
     if (*head == NULL)
-    {
-        return;
-    }
+        return; // If the list is empty, do nothing
 
     struct node *temp = *head;
 
-    // if list has one node
-    if (temp->next == NULL)
+    // If the node to be deleted is the head node
+    if (temp->data == value)
     {
+        *head = temp->next;
         free(temp);
-        *head = NULL;
         return;
     }
 
     struct node *prev = NULL;
-    // find last node
-    while (temp->next != NULL)
+
+    // Traverse the list to find the node with the given value
+    while (temp != NULL && temp->data != value)
     {
         prev = temp;
         temp = temp->next;
     }
- 
-    // unlink the node
-    prev->next = NULL;
-    free(temp);
+
+    if (temp == NULL)
+        return; // If value is not found, do nothing
+
+    prev->next = temp->next; // Unlink the node from the list
+    free(temp);              // Free memory of the deleted node
 }

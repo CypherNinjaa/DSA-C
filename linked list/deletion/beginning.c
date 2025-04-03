@@ -5,14 +5,9 @@ struct node
     int data;
     struct node *next;
 };
-void traverse(struct node *ptr)
-{
-    while (ptr != NULL)
-    {
-        printf("Element : %d\n", ptr->data);
-        ptr = ptr->next;
-    }
-}
+// fn prtp
+void traverse(struct node *head);
+void delete(struct node **head);
 int main()
 {
     struct node *head;
@@ -40,7 +35,33 @@ int main()
     // link last
     fourth->data = 66;
     fourth->next = NULL;
-
+    // traverse fn call
+    traverse(head);
+    printf("After deleting\n");
+    delete (&head);
     traverse(head);
     return 0;
+}
+// traverse fn dfn
+void traverse(struct node *head)
+{
+    while (head != NULL)
+    {
+        printf("Element : %d\n", head->data);
+        head = head->next;
+    }
+}
+
+// delet fn dfn
+void delete(struct node **head)
+{
+    // if head found null
+    if (*head == NULL)
+    {
+        return;
+    }
+    // shift -> head & free
+    struct node *temp = *head;
+    *head = (*head)->next;
+    free(temp);
 }

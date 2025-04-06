@@ -5,83 +5,61 @@
 
 #define MAX 100
 
-// Stack structure
-typedef struct
-{
-    char *items[MAX];
-    int top;
-} Stack;
-
-// Function to initialize the stack
-void initStack(Stack *s)
-{
-    s->top = -1;
-}
+// Global stack variables
+char* stack[MAX];
+int top = -1;
 
 // Function to check if the stack is empty
-int isEmpty(Stack *s)
-{
-    return s->top == -1;
+int isEmpty() {
+    return top == -1;
 }
 
 // Function to push an element onto the stack
-void push(Stack *s, char *str)
-{
-    if (s->top == MAX - 1)
-    {
+void push(char* str) {
+    if (top == MAX - 1) {
         printf("Stack overflow\n");
         return;
     }
-    s->items[++(s->top)] = str;
+    stack[++top] = str;
 }
 
 // Function to pop an element from the stack
-char *pop(Stack *s)
-{
-    if (isEmpty(s))
-    {
+char* pop() {
+    if (isEmpty()) {
         printf("Stack underflow\n");
         return NULL;
     }
-    return s->items[(s->top)--];
+    return stack[top--];
 }
 
 // Function to convert postfix to infix
-void postfixToInfix(char *postfix)
-{
-    Stack s;
-    initStack(&s);
-
-    for (int i = 0; postfix[i] != '\0'; i++)
-    {
+void postfixToInfix(char* postfix) {
+    for (int i = 0; postfix[i] != '\0'; i++) {
         char ch = postfix[i];
 
         // If the character is an operand, push it onto the stack
-        if (isalnum(ch))
-        {
-            char *operand = (char *)malloc(2 * sizeof(char));
+        if (isalnum(ch)) {
+            char* operand = (char*)malloc(2 * sizeof(char));
             operand[0] = ch;
             operand[1] = '\0';
-            push(&s, operand);
+            push(operand);
         }
         // If the character is an operator
-        else
-        {
-            char *op2 = pop(&s);
-            char *op1 = pop(&s);
+        else {
+            char* op2 = pop();
+            char* op1 = pop();
 
-            if (op1 == NULL || op2 == NULL)
-            {
+            if (op1 == NULL || op2 == NULL) {
                 printf("Invalid postfix expression\n");
                 return;
             }
 
             // Allocate memory for the new infix expression
-            char *expr = (char *)malloc(strlen(op1) + strlen(op2) + 4);
+            char* expr = (char*)malloc(strlen(op1) + strlen(op2) + 4);
             sprintf(expr, "(%s%c%s)", op1, ch, op2);
 
             // Push the new expression onto the stack
-            push(&s, expr);
+            push(expr);
 
             // Free the old operands
             free(op1);
@@ -90,9 +68,8 @@ void postfixToInfix(char *postfix)
     }
 
     // The final element in the stack is the infix expression
-    char *result = pop(&s);
-    if (!isEmpty(&s))
-    {
+    char* result = pop();
+    if (!isEmpty()) {
         printf("Invalid postfix expression\n");
         return;
     }
@@ -101,8 +78,7 @@ void postfixToInfix(char *postfix)
     free(result);
 }
 
-int main()
-{
+int main() {
     char postfix[MAX];
     printf("Enter a postfix expression: ");
     scanf("%s", postfix);

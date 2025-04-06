@@ -28,7 +28,7 @@ int main()
         case 4:
             Deletion(ptr, row, column);
             break;
-            case 5:
+        case 5:
             return 0;
         default:
             break;
@@ -58,7 +58,6 @@ void input(int *ptr, int row, int column)
         }
     }
     printf("size updated!\n");
-    
 }
 // diplay function
 void display(int *ptr, int row, int column)
@@ -101,12 +100,11 @@ void Deletion(int *ptr, int row, int column)
             {
                 if (*ptr == element)
                 {
-                    *ptr=0;
+                    *ptr = 0;
                 }
                 ptr++;
             }
         }
     }
     printf("Deleted Succesfully!\n");
-    
 }

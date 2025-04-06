@@ -40,7 +40,7 @@ int main()
             // Call function to check if matrix is sparse
             mtxsparse(ptr, row, col);
             break;
-            case 4:
+        case 4:
             return 0;
         default:
             break;

@@ -33,7 +33,7 @@ int main()
     second->data = 44;
     second->next = third;
 
-    // link second and third
+    // link third and fourth
     third->data = 44;
     third->next = fourth;
 

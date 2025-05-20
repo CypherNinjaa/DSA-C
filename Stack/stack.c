@@ -1,6 +1,6 @@
 #include <stdio.h>
 #define size 10 // max size of stack
-
+//function prototypes
 void push(int stack[], int *top, int);
 void pop(int stack[], int *top);
 void display(int stack[], int *top);
@@ -45,7 +45,7 @@ void push(int stack[], int *top, int n)
     if (*top == size - 1)
     {
         printf("Stack overflow!\n");
-        return;
+        return;     
     }
     stack[++(*top)] = n;
     printf("%d pushed into stack\n", n);

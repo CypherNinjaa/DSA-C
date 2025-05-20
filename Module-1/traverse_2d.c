@@ -19,7 +19,7 @@ int main()
             scanf("%d", &arr[i][j]);
         }
     }
-    // printing arra
+    // printing array
     printf("Your array : \n");
     for (int i = 0; i < a; i++)
     {

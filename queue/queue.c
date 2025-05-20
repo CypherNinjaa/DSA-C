@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define size 5
+#define size 4 
 
 void enqueue();
 void dequeue();

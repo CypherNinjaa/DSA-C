@@ -35,7 +35,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 						Ready to continue your French learning journey?
 					</Text>
 				</View>
-
 				<View style={styles.statsContainer}>
 					<View style={styles.statItem}>
 						<Text style={styles.statNumber}>{user?.points || 0}</Text>
@@ -49,11 +48,17 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 						<Text style={styles.statLevel}>{user?.level || "beginner"}</Text>
 						<Text style={styles.statLabel}>Level</Text>
 					</View>
-				</View>
-
+				</View>{" "}
 				<View style={styles.buttonContainer}>
 					<TouchableOpacity style={styles.primaryButton}>
 						<Text style={styles.primaryButtonText}>Start Learning</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						style={styles.secondaryButton}
+						onPress={() => navigation.navigate("Profile")}
+					>
+						<Text style={styles.secondaryButtonText}>View Profile</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={styles.secondaryButton}>
@@ -66,7 +71,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 						</Text>
 					</TouchableOpacity>
 				</View>
-
 				<TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
 					<Text style={styles.signOutText}>Sign Out</Text>
 				</TouchableOpacity>

@@ -6,6 +6,7 @@ import { LoginScreen } from "../screens/LoginScreen";
 import { RegisterScreen } from "../screens/RegisterScreen";
 import { ForgotPasswordScreen } from "../screens/ForgotPasswordScreen";
 import { HomeScreen } from "../screens/HomeScreen";
+import { ProfileScreen } from "../screens/ProfileScreen";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { theme } from "../constants/theme";
 
@@ -34,7 +35,10 @@ const AuthNavigator: React.FC = () => {
 		>
 			<AuthStack.Screen name="Login" component={LoginScreen} />
 			<AuthStack.Screen name="Register" component={RegisterScreen} />
-			<AuthStack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+			<AuthStack.Screen
+				name="ForgotPassword"
+				component={ForgotPasswordScreen}
+			/>
 		</AuthStack.Navigator>
 	);
 };
@@ -47,6 +51,7 @@ const AppNavigator: React.FC = () => {
 			}}
 		>
 			<AppStack.Screen name="Home" component={HomeScreen} />
+			<AppStack.Screen name="Profile" component={ProfileScreen} />
 		</AppStack.Navigator>
 	);
 };

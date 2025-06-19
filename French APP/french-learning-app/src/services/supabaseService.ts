@@ -221,7 +221,7 @@ export class SupabaseService {
 	static async resetPassword(email: string): Promise<ApiResponse<null>> {
 		try {
 			const { error } = await supabase.auth.resetPasswordForEmail(email, {
-				redirectTo: 'https://your-app.com/reset-password', // Replace with your app's reset URL
+				redirectTo: 'https://your-app.com/reset-password', // This would be your app's deep link
 			});
 
 			if (error) throw error;
